@@ -1,0 +1,1597 @@
+Script CREATE SQL SERVER Relacional
+
+CREATE TABLE [T_GCD_BAIRRO](
+	[ID_BAIRRO] [numeric](8, 0) NOT NULL,
+	[ID_CIDADE] [numeric](10, 0) NOT NULL,
+	[NM_BAIRRO] [varchar](100) NOT NULL,
+ CONSTRAINT [PK_GCD_BAIRRO] PRIMARY KEY CLUSTERED 
+(
+	[ID_BAIRRO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_CIDADE]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_CIDADE](
+	[ID_CIDADE] [numeric](10, 0) NOT NULL,
+	[ID_ESTADO] [numeric](10, 0) NOT NULL,
+	[NM_CIDADE] [varchar](120) NOT NULL,
+ CONSTRAINT [PK_GCD_CIDADE] PRIMARY KEY CLUSTERED 
+(
+	[ID_CIDADE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_COND_LOGR]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_COND_LOGR](
+	[ID_LOGR_EMPRESA] [numeric](10, 0) NOT NULL,
+	[ID_CONDOMINIO] [numeric](10, 0) NOT NULL,
+	[ID_LOGRADOURO] [numeric](10, 0) NOT NULL,
+	[DT_INICIO] [date] NOT NULL,
+	[DT_TERMINO] [date] NULL,
+	[NR_ENDERECO] [numeric](8, 0) NULL,
+	[DS_COMPLEMENTO] [varchar](50) NULL,
+	[DS_PONTO_REFERENCIA] [varchar](500) NULL,
+	[ROWID] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_GCD_COND_LOGR] PRIMARY KEY CLUSTERED 
+(
+	[ID_LOGR_EMPRESA] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_CONDOMINIO]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_CONDOMINIO](
+	[ID_CONDOMINIO] [numeric](10, 0) NOT NULL,
+	[NR_CNPJ] [numeric](14, 0) NOT NULL,
+	[DS_RAZAO_SOCIAL] [varchar](100) NOT NULL,
+	[NM_FANTASIA] [varchar](100) NULL,
+	[DT_FUNDACAO] [date] NOT NULL,
+	[ROWID] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_GCD_CONDOMINIO] PRIMARY KEY CLUSTERED 
+(
+	[ID_CONDOMINIO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_EMAIL]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_EMAIL](
+	[ID_EMAIL] [numeric](10, 0) NOT NULL,
+	[ID_PROPRIETARIO] [numeric](10, 0) NOT NULL,
+	[DS_EMAIL] [varchar](80) NOT NULL,
+	[ST_STATUS] [char](1) NOT NULL,
+	[ROWID] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_GCD_EMAIL] PRIMARY KEY CLUSTERED 
+(
+	[ID_EMAIL] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_ESTADO]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_ESTADO](
+	[ID_ESTADO] [numeric](10, 0) NOT NULL,
+	[NM_ESTADO] [varchar](80) NOT NULL,
+	[SG_ESTADO] [char](2) NOT NULL,
+ CONSTRAINT [PK_GCD_ESTADO] PRIMARY KEY CLUSTERED 
+(
+	[ID_ESTADO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_FUNC_PORTARIA]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_FUNC_PORTARIA](
+	[ID_FUNC_PORTARIA] [numeric](10, 0) NOT NULL,
+	[NM_FUNCIONARIO] [varchar](100) NOT NULL,
+	[DT_NASC] [date] NOT NULL,
+	[NR_CPF] [numeric](12, 0) NOT NULL,
+	[NR_RG] [numeric](11, 0) NOT NULL,
+	[NM_DIGITO_RG] [char](1) NULL,
+	[DT_CADASTRO] [date] NOT NULL,
+ CONSTRAINT [CONSTR$T_GCD_FUNC_PORTARIA] PRIMARY KEY CLUSTERED 
+(
+	[ID_FUNC_PORTARIA] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_LOGR_PROP]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_LOGR_PROP](
+	[ID_LOGR_PROPRIETARIO] [numeric](10, 0) NOT NULL,
+	[ID_LOGRADOURO] [numeric](10, 0) NOT NULL,
+	[ID_PROPRIETARIO] [numeric](10, 0) NOT NULL,
+	[DT_INICIO] [date] NOT NULL,
+	[DT_TERMINO] [date] NULL,
+	[NR_ENDERECO] [numeric](8, 0) NULL,
+	[DS_COMPLEMENTO] [varchar](50) NULL,
+	[DS_PONTO_REFERENCIA] [varchar](500) NULL,
+ CONSTRAINT [PK_GCD_LOGR_PROP] PRIMARY KEY CLUSTERED 
+(
+	[ID_LOGR_PROPRIETARIO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_LOGRADOURO]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_LOGRADOURO](
+	[ID_LOGRADOURO] [numeric](10, 0) NOT NULL,
+	[ID_TP_LOGRADOURO] [numeric](10, 0) NOT NULL,
+	[ID_BAIRRO] [numeric](8, 0) NOT NULL,
+	[CD_TP_LOGRADOURO] [numeric](8, 0) NOT NULL,
+	[DS_LOGRADOURO] [varchar](190) NOT NULL,
+	[NR_CEP] [numeric](8, 0) NOT NULL,
+ CONSTRAINT [PK_GCD_LOGRADOURO] PRIMARY KEY CLUSTERED 
+(
+	[ID_LOGRADOURO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_LOTE]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_LOTE](
+	[ID_CONDOMINIO] [numeric](10, 0) NOT NULL,
+	[ID_LOTE] [numeric](10, 0) NOT NULL,
+	[DT_INICIO] [date] NOT NULL,
+	[NR_LOTE] [numeric](6, 0) NULL,
+	[NR_QUADRA] [numeric](6, 0) NULL,
+	[DS_LOGRADOURO_CONDOMINIO] [varchar](70) NULL,
+	[NR_RESIDENCIA] [varchar](15) NULL,
+	[ST_LOTE] [varchar](25) NULL,
+ CONSTRAINT [CONSTR$T_GCD_LOTE] PRIMARY KEY CLUSTERED 
+(
+	[ID_LOTE] ASC,
+	[ID_CONDOMINIO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_LOTE_PROP]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_LOTE_PROP](
+	[ID_LOTE_PROP] [numeric](10, 0) NOT NULL,
+	[ID_CONDOMINIO] [numeric](10, 0) NOT NULL,
+	[ID_LOTE] [numeric](10, 0) NOT NULL,
+	[ID_PROPRIETARIO] [numeric](10, 0) NOT NULL,
+	[DT_INICIO] [date] NOT NULL,
+	[DT_TERMINO] [date] NULL,
+ CONSTRAINT [PK_GCD_LOTE_PROP] PRIMARY KEY CLUSTERED 
+(
+	[ID_LOTE_PROP] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_MOVIMENTACAO_PORTARIA]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_MOVIMENTACAO_PORTARIA](
+	[ID_MOVIMENTACAO] [numeric](10, 0) NOT NULL,
+	[ID_PORTARIA] [numeric](10, 0) NOT NULL,
+	[ID_PASSAGEM] [numeric](8, 0) NOT NULL,
+	[ID_LOTE_PROP] [numeric](10, 0) NULL,
+	[ID_FUNC_PORTARIA] [numeric](10, 0) NOT NULL,
+	[ID_VISITANTE] [numeric](10, 0) NULL,
+	[TP_MOVIMENTACAO] [char](1) NOT NULL,
+	[DT_MOVIMENTACAO] [date] NOT NULL,
+	[DS_RESUMIDA] [varchar](300) NULL,
+	[IMG_MOVIMENTACAO] [varbinary](max) NULL,
+	[ROWID] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_GCD_MOVIMENTACAO] PRIMARY KEY CLUSTERED 
+(
+	[ID_MOVIMENTACAO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_PASSAGEM_PORTARIA]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_PASSAGEM_PORTARIA](
+	[ID_PORTARIA] [numeric](10, 0) NOT NULL,
+	[ID_PASSAGEM] [numeric](8, 0) NOT NULL,
+	[NR_PASSAGEM] [numeric](8, 0) NULL,
+	[NM_PASSAGEM] [varchar](90) NULL,
+	[ST_STATUS] [char](1) NOT NULL,
+	[DT_INICIO] [date] NOT NULL,
+	[DT_TERMINO] [date] NULL,
+ CONSTRAINT [CONSTR$T_GCD_PASSAGEM_PORTARIA] PRIMARY KEY CLUSTERED 
+(
+	[ID_PASSAGEM] ASC,
+	[ID_PORTARIA] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_PORTARIA]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_PORTARIA](
+	[ID_PORTARIA] [numeric](10, 0) NOT NULL,
+	[ID_CONDOMINIO] [numeric](10, 0) NOT NULL,
+	[NR_PORTARIA] [numeric](8, 0) NULL,
+	[NM_PORTARIA] [varchar](90) NULL,
+	[ST_STATUS] [char](1) NOT NULL,
+	[DT_INICIO] [date] NOT NULL,
+	[DT_TERMINO] [date] NULL,
+ CONSTRAINT [PK_GCD_PORTARIA] PRIMARY KEY CLUSTERED 
+(
+	[ID_PORTARIA] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_PROP_IMAGEM]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_PROP_IMAGEM](
+	[ID_PROPRIETARIO] [numeric](10, 0) NOT NULL,
+	[ID_IMAGEM] [numeric](5, 0) NOT NULL,
+	[IMG_PROPEITARIO] [varbinary](max) NOT NULL,
+	[DT_INICIO] [date] NOT NULL,
+	[DT_TERMINO] [date] NULL,
+ CONSTRAINT [PK_GCD_PROP_IMAGEM] PRIMARY KEY CLUSTERED 
+(
+	[ID_PROPRIETARIO] ASC,
+	[ID_IMAGEM] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_PROPRIETARIO]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_PROPRIETARIO](
+	[ID_PROPRIETARIO] [numeric](10, 0) NOT NULL,
+	[NM_PROPRIETARIO] [varchar](100) NOT NULL,
+	[NM_APELIDO] [varchar](50) NULL,
+	[DT_NASC] [date] NOT NULL,
+	[NR_CPF] [numeric](12, 0) NULL,
+	[NR_RG] [numeric](11, 0) NULL,
+	[NM_DIGITO_RG] [char](1) NULL,
+	[ST_GENERO_BIOLOGICO] [char](1) NULL,
+	[ST_PROPRIETARIO] [char](1) NULL,
+	[DT_CADASTRO] [date] NOT NULL,
+ CONSTRAINT [PK_GCD_PROPRIETARIO] PRIMARY KEY CLUSTERED 
+(
+	[ID_PROPRIETARIO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_TELEFONE]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_TELEFONE](
+	[ID_TELEFONE] [numeric](10, 0) NOT NULL,
+	[ID_PROPRIETARIO] [numeric](10, 0) NOT NULL,
+	[ID_TIPO_FONE] [numeric](2, 0) NOT NULL,
+	[NR_DDI] [numeric](3, 0) NULL,
+	[NR_DDD] [numeric](3, 0) NOT NULL,
+	[NR_TELEFONE] [numeric](9, 0) NOT NULL,
+	[ST_STATUS] [char](1) NOT NULL,
+	[ROWID] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_GCD_TELEFONE] PRIMARY KEY CLUSTERED 
+(
+	[ID_TELEFONE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_TIPO_LOGRADOURO]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_TIPO_LOGRADOURO](
+	[ID_TP_LOGRADOURO] [numeric](10, 0) NOT NULL,
+	[NM_TIPO_LOGRADOURO] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_GCD_TIPO_LOGRADOURO] PRIMARY KEY CLUSTERED 
+(
+	[ID_TP_LOGRADOURO] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_TIPO_TELEFONE]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_TIPO_TELEFONE](
+	[ID_TIPO_FONE] [numeric](2, 0) NOT NULL,
+	[DS_TIPO_FONE] [varchar](25) NOT NULL,
+	[ROWID] [uniqueidentifier] NOT NULL,
+ CONSTRAINT [PK_GCD_TIPO_TELEFONE] PRIMARY KEY CLUSTERED 
+(
+	[ID_TIPO_FONE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+/****** Object:  Table [T_GCD_VISITANTE]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [T_GCD_VISITANTE](
+	[ID_VISITANTE] [numeric](10, 0) NOT NULL,
+	[NM_VISITANTE] [varchar](100) NOT NULL,
+	[DT_NASC] [date] NOT NULL,
+	[NR_CPF] [numeric](12, 0) NULL,
+	[NR_RG] [numeric](11, 0) NULL,
+	[NM_DIGITO_RG] [char](1) NULL,
+	[DT_CADASTRO] [date] NOT NULL,
+ CONSTRAINT [CONSTR$T_GCD_VISITANTE] PRIMARY KEY CLUSTERED 
+(
+	[ID_VISITANTE] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [T_GCD_COND_LOGR] ADD  DEFAULT (newid()) FOR [ROWID]
+GO
+
+ALTER TABLE [T_GCD_CONDOMINIO] ADD  DEFAULT (newid()) FOR [ROWID]
+GO
+
+ALTER TABLE [T_GCD_EMAIL] ADD  DEFAULT (newid()) FOR [ROWID]
+GO
+
+ALTER TABLE [T_GCD_MOVIMENTACAO_PORTARIA] ADD  DEFAULT (newid()) FOR [ROWID]
+GO
+
+ALTER TABLE [T_GCD_PASSAGEM_PORTARIA] ADD  DEFAULT ('A') FOR [ST_STATUS]
+GO
+
+ALTER TABLE [T_GCD_PORTARIA] ADD  DEFAULT ('A') FOR [ST_STATUS]
+GO
+
+ALTER TABLE [T_GCD_TELEFONE] ADD  DEFAULT (newid()) FOR [ROWID]
+GO
+
+ALTER TABLE [T_GCD_TIPO_TELEFONE] ADD  DEFAULT (newid()) FOR [ROWID]
+GO
+
+ALTER TABLE [T_GCD_BAIRRO]  WITH CHECK ADD  CONSTRAINT [FK_GCD_CIDADE_BAIRRO] FOREIGN KEY([ID_CIDADE])
+REFERENCES [T_GCD_CIDADE] ([ID_CIDADE])
+GO
+
+ALTER TABLE [T_GCD_BAIRRO] CHECK CONSTRAINT [FK_GCD_CIDADE_BAIRRO]
+GO
+
+ALTER TABLE [T_GCD_CIDADE]  WITH CHECK ADD  CONSTRAINT [FK_GCD_ESTADO_CIDADE] FOREIGN KEY([ID_ESTADO])
+REFERENCES [T_GCD_ESTADO] ([ID_ESTADO])
+GO
+
+ALTER TABLE [T_GCD_CIDADE] CHECK CONSTRAINT [FK_GCD_ESTADO_CIDADE]
+GO
+
+ALTER TABLE [T_GCD_COND_LOGR]  WITH CHECK ADD  CONSTRAINT [FK_GCD_COND_LOGR] FOREIGN KEY([ID_CONDOMINIO])
+REFERENCES [T_GCD_CONDOMINIO] ([ID_CONDOMINIO])
+GO
+
+ALTER TABLE [T_GCD_COND_LOGR] CHECK CONSTRAINT [FK_GCD_COND_LOGR]
+GO
+
+ALTER TABLE [T_GCD_COND_LOGR]  WITH CHECK ADD  CONSTRAINT [FK_GCD_LOGR_COND] FOREIGN KEY([ID_LOGRADOURO])
+REFERENCES [T_GCD_LOGRADOURO] ([ID_LOGRADOURO])
+GO
+
+ALTER TABLE [T_GCD_COND_LOGR] CHECK CONSTRAINT [FK_GCD_LOGR_COND]
+GO
+
+ALTER TABLE [T_GCD_EMAIL]  WITH CHECK ADD  CONSTRAINT [FK_JKC_PROP_EMAIL] FOREIGN KEY([ID_PROPRIETARIO])
+REFERENCES [T_GCD_PROPRIETARIO] ([ID_PROPRIETARIO])
+GO
+
+ALTER TABLE [T_GCD_EMAIL] CHECK CONSTRAINT [FK_JKC_PROP_EMAIL]
+GO
+
+ALTER TABLE [T_GCD_LOGR_PROP]  WITH CHECK ADD  CONSTRAINT [FK_GCD_LOGR_PROP] FOREIGN KEY([ID_LOGRADOURO])
+REFERENCES [T_GCD_LOGRADOURO] ([ID_LOGRADOURO])
+GO
+
+ALTER TABLE [T_GCD_LOGR_PROP] CHECK CONSTRAINT [FK_GCD_LOGR_PROP]
+GO
+
+ALTER TABLE [T_GCD_LOGR_PROP]  WITH CHECK ADD  CONSTRAINT [FK_GCD_PROP_LOGR] FOREIGN KEY([ID_PROPRIETARIO])
+REFERENCES [T_GCD_PROPRIETARIO] ([ID_PROPRIETARIO])
+GO
+
+ALTER TABLE [T_GCD_LOGR_PROP] CHECK CONSTRAINT [FK_GCD_PROP_LOGR]
+GO
+
+ALTER TABLE [T_GCD_LOGRADOURO]  WITH CHECK ADD  CONSTRAINT [FK_GCD_BAIRRO_LOGR] FOREIGN KEY([ID_BAIRRO])
+REFERENCES [T_GCD_BAIRRO] ([ID_BAIRRO])
+GO
+
+ALTER TABLE [T_GCD_LOGRADOURO] CHECK CONSTRAINT [FK_GCD_BAIRRO_LOGR]
+GO
+
+ALTER TABLE [T_GCD_LOGRADOURO]  WITH CHECK ADD  CONSTRAINT [FK_GCD_TIPO_LOGR] FOREIGN KEY([ID_TP_LOGRADOURO])
+REFERENCES [T_GCD_TIPO_LOGRADOURO] ([ID_TP_LOGRADOURO])
+GO
+
+ALTER TABLE [T_GCD_LOGRADOURO] CHECK CONSTRAINT [FK_GCD_TIPO_LOGR]
+GO
+
+ALTER TABLE [T_GCD_LOTE]  WITH CHECK ADD  CONSTRAINT [FK_GCD_COND_LOTE] FOREIGN KEY([ID_CONDOMINIO])
+REFERENCES [T_GCD_CONDOMINIO] ([ID_CONDOMINIO])
+GO
+
+ALTER TABLE [T_GCD_LOTE] CHECK CONSTRAINT [FK_GCD_COND_LOTE]
+GO
+
+ALTER TABLE [T_GCD_LOTE_PROP]  WITH CHECK ADD  CONSTRAINT [FK_GCD_LOTE_PROP] FOREIGN KEY([ID_LOTE], [ID_CONDOMINIO])
+REFERENCES [T_GCD_LOTE] ([ID_LOTE], [ID_CONDOMINIO])
+GO
+
+ALTER TABLE [T_GCD_LOTE_PROP] CHECK CONSTRAINT [FK_GCD_LOTE_PROP]
+GO
+
+ALTER TABLE [T_GCD_LOTE_PROP]  WITH CHECK ADD  CONSTRAINT [FK_GCD_PROP_LOTE] FOREIGN KEY([ID_PROPRIETARIO])
+REFERENCES [T_GCD_PROPRIETARIO] ([ID_PROPRIETARIO])
+GO
+
+ALTER TABLE [T_GCD_LOTE_PROP] CHECK CONSTRAINT [FK_GCD_PROP_LOTE]
+GO
+
+ALTER TABLE [T_GCD_MOVIMENTACAO_PORTARIA]  WITH CHECK ADD  CONSTRAINT [FK_GCD_FUNC_MOV] FOREIGN KEY([ID_FUNC_PORTARIA])
+REFERENCES [T_GCD_FUNC_PORTARIA] ([ID_FUNC_PORTARIA])
+GO
+
+ALTER TABLE [T_GCD_MOVIMENTACAO_PORTARIA] CHECK CONSTRAINT [FK_GCD_FUNC_MOV]
+GO
+
+ALTER TABLE [T_GCD_MOVIMENTACAO_PORTARIA]  WITH CHECK ADD  CONSTRAINT [FK_GCD_PORTARIA_MOV] FOREIGN KEY([ID_PASSAGEM], [ID_PORTARIA])
+REFERENCES [T_GCD_PASSAGEM_PORTARIA] ([ID_PASSAGEM], [ID_PORTARIA])
+GO
+
+ALTER TABLE [T_GCD_MOVIMENTACAO_PORTARIA] CHECK CONSTRAINT [FK_GCD_PORTARIA_MOV]
+GO
+
+ALTER TABLE [T_GCD_MOVIMENTACAO_PORTARIA]  WITH CHECK ADD  CONSTRAINT [FK_GCD_PROP_MOV] FOREIGN KEY([ID_LOTE_PROP])
+REFERENCES [T_GCD_LOTE_PROP] ([ID_LOTE_PROP])
+GO
+
+ALTER TABLE [T_GCD_MOVIMENTACAO_PORTARIA] CHECK CONSTRAINT [FK_GCD_PROP_MOV]
+GO
+
+ALTER TABLE [T_GCD_MOVIMENTACAO_PORTARIA]  WITH CHECK ADD  CONSTRAINT [FK_GCD_VISITANTE_MOV] FOREIGN KEY([ID_VISITANTE])
+REFERENCES [T_GCD_VISITANTE] ([ID_VISITANTE])
+GO
+
+ALTER TABLE [T_GCD_MOVIMENTACAO_PORTARIA] CHECK CONSTRAINT [FK_GCD_VISITANTE_MOV]
+GO
+
+ALTER TABLE [T_GCD_PASSAGEM_PORTARIA]  WITH CHECK ADD  CONSTRAINT [FK_GCD_PORTARIA_PASSAGEM] FOREIGN KEY([ID_PORTARIA])
+REFERENCES [T_GCD_PORTARIA] ([ID_PORTARIA])
+GO
+
+ALTER TABLE [T_GCD_PASSAGEM_PORTARIA] CHECK CONSTRAINT [FK_GCD_PORTARIA_PASSAGEM]
+GO
+
+ALTER TABLE [T_GCD_PORTARIA]  WITH CHECK ADD  CONSTRAINT [FK_GCD_COND_PORTARIA] FOREIGN KEY([ID_CONDOMINIO])
+REFERENCES [T_GCD_CONDOMINIO] ([ID_CONDOMINIO])
+GO
+
+ALTER TABLE [T_GCD_PORTARIA] CHECK CONSTRAINT [FK_GCD_COND_PORTARIA]
+GO
+
+ALTER TABLE [T_GCD_PROP_IMAGEM]  WITH CHECK ADD  CONSTRAINT [FK_GCD_PROP_IMAGEM] FOREIGN KEY([ID_PROPRIETARIO])
+REFERENCES [T_GCD_PROPRIETARIO] ([ID_PROPRIETARIO])
+GO
+
+ALTER TABLE [T_GCD_PROP_IMAGEM] CHECK CONSTRAINT [FK_GCD_PROP_IMAGEM]
+GO
+
+ALTER TABLE [T_GCD_TELEFONE]  WITH CHECK ADD  CONSTRAINT [FK_GCD_PROP_TELEF] FOREIGN KEY([ID_PROPRIETARIO])
+REFERENCES [T_GCD_PROPRIETARIO] ([ID_PROPRIETARIO])
+GO
+
+ALTER TABLE [T_GCD_TELEFONE] CHECK CONSTRAINT [FK_GCD_PROP_TELEF]
+GO
+
+ALTER TABLE [T_GCD_TELEFONE]  WITH CHECK ADD  CONSTRAINT [FK_GCD_TIP_TEL_TEL] FOREIGN KEY([ID_TIPO_FONE])
+REFERENCES [T_GCD_TIPO_TELEFONE] ([ID_TIPO_FONE])
+GO
+
+ALTER TABLE [T_GCD_TELEFONE] CHECK CONSTRAINT [FK_GCD_TIP_TEL_TEL]
+GO
+
+ALTER TABLE [T_GCD_EMAIL]  WITH CHECK ADD  CONSTRAINT [CK_JKC_EMAIL_ST] CHECK  (([ST_STATUS]='I' OR [ST_STATUS]='A'))
+GO
+
+ALTER TABLE [T_GCD_EMAIL] CHECK CONSTRAINT [CK_JKC_EMAIL_ST]
+GO
+
+ALTER TABLE [T_GCD_PASSAGEM_PORTARIA]  WITH CHECK ADD  CONSTRAINT [CK_T_GCD_PORTARIAV1_ST_STATUS] CHECK  (([ST_STATUS]='I' OR [ST_STATUS]='A'))
+GO
+
+ALTER TABLE [T_GCD_PASSAGEM_PORTARIA] CHECK CONSTRAINT [CK_T_GCD_PORTARIAV1_ST_STATUS]
+GO
+
+ALTER TABLE [T_GCD_PORTARIA]  WITH CHECK ADD  CONSTRAINT [SYS_C009019] CHECK  (([ST_STATUS]='I' OR [ST_STATUS]='A'))
+GO
+
+ALTER TABLE [T_GCD_PORTARIA] CHECK CONSTRAINT [SYS_C009019]
+GO
+
+ALTER TABLE [T_GCD_TELEFONE]  WITH CHECK ADD  CONSTRAINT [CK_JKC_TEL_ST] CHECK  (([ST_STATUS]='I' OR [ST_STATUS]='A'))
+GO
+
+ALTER TABLE [T_GCD_TELEFONE] CHECK CONSTRAINT [CK_JKC_TEL_ST]
+GO
+
+
+
+
+
+
+Script INSERT SQL SERVER Relacional
+
+INSERT INTO dbo.T_GCD_ESTADO (id_estado, nm_estado, sg_estado) VALUES
+(1, 'São Paulo', 'SP');
+
+INSERT INTO dbo.T_GCD_CIDADE (id_cidade, id_estado, nm_cidade) VALUES
+(1,	1, 'São Paulo');
+
+INSERT INTO dbo.T_GCD_BAIRRO (id_bairro, id_cidade, nm_bairro) VALUES
+(1,  1, 'Cidade Jardim');
+
+INSERT INTO dbo.T_GCD_TIPO_LOGRADOURO (id_tp_logradouro, nm_tipo_logradouro) VALUES
+(1, 'avenida');
+INSERT INTO dbo.T_GCD_TIPO_LOGRADOURO (id_tp_logradouro, nm_tipo_logradouro) VALUES
+(2, 'rua');
+
+INSERT INTO dbo.T_GCD_LOGRADOURO (id_logradouro, id_tp_logradouro, id_bairro, cd_tp_logradouro, ds_logradouro, nr_cep) VALUES
+(100, 2, 1, 2, 'Abaeté, Rua Visconde de', 08330170);
+INSERT INTO dbo.T_GCD_LOGRADOURO (id_logradouro, id_tp_logradouro, id_bairro, cd_tp_logradouro, ds_logradouro, nr_cep) VALUES
+(200, 2, 1, 2, 'Abagiba, Rua', 08432190);
+INSERT INTO dbo.T_GCD_LOGRADOURO (id_logradouro, id_tp_logradouro, id_bairro, cd_tp_logradouro, ds_logradouro, nr_cep) VALUES
+(300, 2, 1, 2, 'Abdo Schahin, Rua Comendador', 08544175);
+INSERT INTO dbo.T_GCD_LOGRADOURO (id_logradouro, id_tp_logradouro, id_bairro, cd_tp_logradouro, ds_logradouro, nr_cep) VALUES
+(400, 1, 1, 1, 'Abel Ferreira, Avenida Vereador', 08340180);
+INSERT INTO dbo.T_GCD_LOGRADOURO (id_logradouro, id_tp_logradouro, id_bairro, cd_tp_logradouro, ds_logradouro, nr_cep) VALUES
+(500, 2, 1, 2, 'Abel Seixas, Rua ', 08690160);
+
+
+INSERT INTO dbo.T_GCD_PROPRIETARIO 
+(id_proprietario, nm_proprietario, nm_apelido, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, st_genero_biologico, 
+st_proprietario, dt_cadastro) VALUES
+(1, 'Mariza  Fonseca','MA' ,  convert(date, '18/07/1972', 103), 55392651146,	19163285, 1, 'F', 'A', convert(date, '25/01/2003', 103));
+INSERT INTO dbo.T_GCD_PROPRIETARIO 
+(id_proprietario, nm_proprietario, nm_apelido, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, st_genero_biologico, 
+st_proprietario, dt_cadastro) VALUES
+(2, 'Clenice Laporte Lopes', 'Cleo', convert(date, '28/07/1968', 103), 55392651136,	19163285, 2	,'F', 'A', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_PROPRIETARIO 
+(id_proprietario, nm_proprietario, nm_apelido, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, st_genero_biologico, 
+st_proprietario, dt_cadastro) VALUES
+(3, 'João Paulo Lima', 'JP',   convert(date, '29/07/1962', 103), 65392651136, 19163285, 3 ,'M', 'A', convert(date, '25/01/2003', 103));
+INSERT INTO dbo.T_GCD_PROPRIETARIO 
+(id_proprietario, nm_proprietario, nm_apelido, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, st_genero_biologico, 
+st_proprietario, dt_cadastro) VALUES
+(4, 'Antonio Silva', 'Tonho', convert(date, '30/07/1977', 103), 75392651136, 19163285, 4 ,'M', 'A', convert(date, '20/01/2003', 103));
+
+
+INSERT INTO dbo.T_GCD_EMAIL (id_email, id_proprietario, ds_email, st_status) VALUES
+(1, 1, 'particular1@gmail.com', 'A');
+INSERT INTO dbo.T_GCD_EMAIL (id_email, id_proprietario, ds_email, st_status) VALUES
+(2, 2, 'particular2@gmail.com', 'A');
+INSERT INTO dbo.T_GCD_EMAIL (id_email, id_proprietario, ds_email, st_status) VALUES
+(3, 3, 'particular3@gmail.com', 'A');
+INSERT INTO dbo.T_GCD_EMAIL (id_email, id_proprietario, ds_email, st_status) VALUES
+(4, 4, 'particular4@gmail.com', 'A');
+
+INSERT INTO dbo.T_GCD_TIPO_TELEFONE (id_tipo_fone, ds_tipo_fone) VALUES
+(1, 'Celular');	
+INSERT INTO dbo.T_GCD_TIPO_TELEFONE (id_tipo_fone, ds_tipo_fone) VALUES
+(2, 'Celular');
+INSERT INTO dbo.T_GCD_TIPO_TELEFONE (id_tipo_fone, ds_tipo_fone) VALUES
+(3, 'Celular');
+INSERT INTO dbo.T_GCD_TIPO_TELEFONE (id_tipo_fone, ds_tipo_fone) VALUES
+(4, 'Celular');
+
+INSERT INTO dbo.T_GCD_TELEFONE (id_telefone, id_proprietario, id_tipo_fone, nr_ddi, nr_ddd, nr_telefone, st_status) VALUES
+(1, 1, 1, 55, 11, 99877265, 'A');
+INSERT INTO dbo.T_GCD_TELEFONE (id_telefone, id_proprietario, id_tipo_fone, nr_ddi, nr_ddd, nr_telefone, st_status) VALUES
+(2, 2, 1, 55, 11, 99179881, 'A');
+INSERT INTO dbo.T_GCD_TELEFONE (id_telefone, id_proprietario, id_tipo_fone, nr_ddi, nr_ddd, nr_telefone, st_status) VALUES
+(3, 3, 1, 55, 11, 98240550, 'A');
+INSERT INTO dbo.T_GCD_TELEFONE (id_telefone, id_proprietario, id_tipo_fone, nr_ddi, nr_ddd, nr_telefone, st_status) VALUES
+(4, 4, 1, 55, 11, 93124806, 'A');
+
+INSERT INTO dbo.T_GCD_PROP_IMAGEM (id_proprietario, id_imagem, img_propeitario, dt_inicio, dt_termino) VALUES
+(1, 1, convert(varbinary, 'aaa'), convert(date, '25/01/2003', 103),null);
+INSERT INTO dbo.T_GCD_PROP_IMAGEM (id_proprietario, id_imagem, img_propeitario, dt_inicio, dt_termino) VALUES
+(2,	2, convert(varbinary, 'bbb'), convert(date, '20/01/2003', 103),null);
+INSERT INTO dbo.T_GCD_PROP_IMAGEM (id_proprietario, id_imagem, img_propeitario, dt_inicio, dt_termino) VALUES
+(3, 3, convert(varbinary, 'ccc'), convert(date, '25/01/2003', 103),null);
+INSERT INTO dbo.T_GCD_PROP_IMAGEM (id_proprietario, id_imagem, img_propeitario, dt_inicio, dt_termino) VALUES
+(4,	4, convert(varbinary, 'ddd'), convert(date, '20/01/2003', 103),null);
+
+INSERT INTO dbo.T_GCD_LOGR_PROP (id_logr_proprietario, id_logradouro, id_proprietario, dt_inicio, dt_termino, nr_endereco, ds_complemento, ds_ponto_referencia) VALUES
+(1,100,1,convert(date, '25/01/2003', 103),null,123,null,null);
+INSERT INTO dbo.T_GCD_LOGR_PROP (id_logr_proprietario, id_logradouro, id_proprietario, dt_inicio, dt_termino, nr_endereco, ds_complemento, ds_ponto_referencia) VALUES
+(2,200,2,convert(date, '20/01/2003', 103),null,456,null,null);
+INSERT INTO dbo.T_GCD_LOGR_PROP (id_logr_proprietario, id_logradouro, id_proprietario, dt_inicio, dt_termino, nr_endereco, ds_complemento, ds_ponto_referencia) VALUES
+(3,300,3,convert(date, '25/01/2003', 103),null,789,null,null);
+INSERT INTO dbo.T_GCD_LOGR_PROP (id_logr_proprietario, id_logradouro, id_proprietario, dt_inicio, dt_termino, nr_endereco, ds_complemento, ds_ponto_referencia) VALUES
+(4,400,4,convert(date, '20/01/2003', 103),null,888,null,null);
+
+insert INTO dbo.T_GCD_CONDOMINIO (id_condominio,nr_cnpj,ds_razao_social,nm_fantasia,dt_fundacao)
+values
+(1,123456789,'condominio 1','condonoo 1',convert(date, '01/02/2000', 103));
+insert INTO dbo.T_GCD_CONDOMINIO (id_condominio,nr_cnpj,ds_razao_social,nm_fantasia,dt_fundacao)
+values
+(2,223456789,'condominio 2','condonoo 2',convert(date, '02/02/2000', 103));
+insert INTO dbo.T_GCD_CONDOMINIO (id_condominio,nr_cnpj,ds_razao_social,nm_fantasia,dt_fundacao)
+values
+(3,323456789,'condominio 3','condonoo 3',convert(date, '03/02/2000', 103));
+insert INTO dbo.T_GCD_CONDOMINIO (id_condominio,nr_cnpj,ds_razao_social,nm_fantasia,dt_fundacao)
+values
+(4,423456789,'condominio 4','condonoo 4',convert(date, '04/02/2000', 103));
+
+insert INTO dbo.T_GCD_PORTARIA (id_portaria,id_condominio,nr_portaria,nm_portaria,st_status,dt_inicio,dt_termino) values 
+(1,1,1,'porte entrada condonoo 1','A',convert(date, '01/02/2000', 103),null);
+insert INTO dbo.T_GCD_PORTARIA (id_portaria,id_condominio,nr_portaria,nm_portaria,st_status,dt_inicio,dt_termino) values
+(2,1,2,'porte saida condonoo 1','A',convert(date, '01/02/2000', 103),null);
+insert INTO dbo.T_GCD_PORTARIA (id_portaria,id_condominio,nr_portaria,nm_portaria,st_status,dt_inicio,dt_termino) values
+(3,2,1,'porte entrada condonoo 2','A',convert(date, '02/02/2000', 103),null);
+insert INTO dbo.T_GCD_PORTARIA (id_portaria,id_condominio,nr_portaria,nm_portaria,st_status,dt_inicio,dt_termino) values
+(4,2,2,'porte saida condonoo 2','A',convert(date, '02/02/2000', 103),null);
+insert INTO dbo.T_GCD_PORTARIA (id_portaria,id_condominio,nr_portaria,nm_portaria,st_status,dt_inicio,dt_termino) values
+(5,3,1,'porte entrada condonoo 3','A',convert(date, '03/02/2000', 103),null);
+insert INTO dbo.T_GCD_PORTARIA (id_portaria,id_condominio,nr_portaria,nm_portaria,st_status,dt_inicio,dt_termino) values
+(6,3,2,'porte saida condonoo 3','A',convert(date, '03/02/2000', 103),null);
+insert INTO dbo.T_GCD_PORTARIA (id_portaria,id_condominio,nr_portaria,nm_portaria,st_status,dt_inicio,dt_termino) values
+(7,4,1,'porte entrada condonoo 4','A',convert(date, '04/02/2000', 103),null);
+insert INTO dbo.T_GCD_PORTARIA (id_portaria,id_condominio,nr_portaria,nm_portaria,st_status,dt_inicio,dt_termino) values
+(8,4,2,'porte saida condonoo 4','A',convert(date, '04/02/2000', 103),null);
+
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(1,1,1,'pass social porte entrada condonoo 1','A',convert(date, '01/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(1,2,2,'pass garagem porte entrada condonoo 1','A',convert(date, '01/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(2,3,1,'pass social porte saida condonoo 1','A',convert(date, '01/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(2,4,2,'pass garagem porte saida condonoo 1','A',convert(date, '01/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(3,5,1,'pass social porte entrada condonoo 2','A',convert(date, '02/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(3,6,2,'pass garagem porte entrada condonoo 2','A',convert(date, '02/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(4,7,1,'pass social porte saida condonoo 2','A',convert(date, '02/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(4,8,2,'pass garagem porte saida condonoo 2','A',convert(date, '02/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(5,9,1,'pass social porte entrada condonoo 3','A',convert(date, '03/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(5,10,2,'pass garagem porte entrada condonoo 3','A',convert(date, '03/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(6,11,1,'pass social porte saida condonoo 3','A',convert(date, '03/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(6,12,2,'pass garagem porte saida condonoo 3','A',convert(date, '03/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(7,13,1,'pass social porte entrada condonoo 4','A',convert(date, '04/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(7,14,2,'pass garagem porte entrada condonoo 4','A',convert(date, '04/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(8,15,1,'pass social porte saida condonoo 4','A',convert(date, '04/02/2000', 103),null);
+insert INTO dbo.T_GCD_PASSAGEM_PORTARIA (id_portaria,id_passagem,nr_passagem,nm_passagem,st_status,dt_inicio,dt_termino) values
+(8,16,2,'pass garagem porte saida condonoo 4','A',convert(date, '04/02/2000', 103),null);
+
+insert INTO dbo.T_GCD_LOTE (id_condominio,id_lote,dt_inicio,nr_lote,nr_quadra,ds_logradouro_condominio,nr_residencia,st_lote) values
+(1,1,convert(date, '01/02/2000', 103),1,1,'FALTA PRENCHER',4000,'Residência');
+insert INTO dbo.T_GCD_LOTE (id_condominio,id_lote,dt_inicio,nr_lote,nr_quadra,ds_logradouro_condominio,nr_residencia,st_lote) values
+(1,2,convert(date, '01/02/2000', 103),2,2,'FALTA PRENCHER',4001,'Residência');
+insert INTO dbo.T_GCD_LOTE (id_condominio,id_lote,dt_inicio,nr_lote,nr_quadra,ds_logradouro_condominio,nr_residencia,st_lote) values
+(2,3,convert(date, '02/02/2000', 103),1,1,'FALTA PRENCHER',5000,'Residência');
+insert INTO dbo.T_GCD_LOTE (id_condominio,id_lote,dt_inicio,nr_lote,nr_quadra,ds_logradouro_condominio,nr_residencia,st_lote) values
+(2,4,convert(date, '02/02/2000', 103),2,2,'FALTA PRENCHER',5001,'Residência');
+insert INTO dbo.T_GCD_LOTE (id_condominio,id_lote,dt_inicio,nr_lote,nr_quadra,ds_logradouro_condominio,nr_residencia,st_lote) values
+(3,5,convert(date, '03/02/2000', 103),1,1,'FALTA PRENCHER',6000,'Residência');
+insert INTO dbo.T_GCD_LOTE (id_condominio,id_lote,dt_inicio,nr_lote,nr_quadra,ds_logradouro_condominio,nr_residencia,st_lote) values
+(3,6,convert(date, '03/02/2000', 103),2,2,'FALTA PRENCHER',6001,'Residência');
+insert INTO dbo.T_GCD_LOTE (id_condominio,id_lote,dt_inicio,nr_lote,nr_quadra,ds_logradouro_condominio,nr_residencia,st_lote) values
+(4,7,convert(date, '04/02/2000', 103),1,1,'FALTA PRENCHER',7000,'Residência');
+insert INTO dbo.T_GCD_LOTE (id_condominio,id_lote,dt_inicio,nr_lote,nr_quadra,ds_logradouro_condominio,nr_residencia,st_lote) values
+(4,8,convert(date, '04/02/2000', 103),2,2,'FALTA PRENCHER',7001,'Residência');
+
+insert INTO dbo.T_GCD_LOTE_PROP (id_lote_prop,id_condominio,id_lote,id_proprietario,dt_inicio,dt_termino) values
+(1,1,1,1,convert(date, '01/02/2000', 103),null);
+insert INTO dbo.T_GCD_LOTE_PROP (id_lote_prop,id_condominio,id_lote,id_proprietario,dt_inicio,dt_termino) values
+(2,1,2,2,convert(date, '01/02/2000', 103),null);
+insert INTO dbo.T_GCD_LOTE_PROP (id_lote_prop,id_condominio,id_lote,id_proprietario,dt_inicio,dt_termino) values
+(3,2,3,1,convert(date, '02/02/2000', 103),null);
+insert INTO dbo.T_GCD_LOTE_PROP (id_lote_prop,id_condominio,id_lote,id_proprietario,dt_inicio,dt_termino) values
+(4,2,4,2,convert(date, '02/02/2000', 103),null);
+insert INTO dbo.T_GCD_LOTE_PROP (id_lote_prop,id_condominio,id_lote,id_proprietario,dt_inicio,dt_termino) values
+(5,3,5,3,convert(date, '03/02/2000', 103),null);
+insert INTO dbo.T_GCD_LOTE_PROP (id_lote_prop,id_condominio,id_lote,id_proprietario,dt_inicio,dt_termino) values
+(6,3,6,4,convert(date, '03/02/2000', 103),null);
+insert INTO dbo.T_GCD_LOTE_PROP (id_lote_prop,id_condominio,id_lote,id_proprietario,dt_inicio,dt_termino) values
+(7,4,7,3,convert(date, '04/02/2000', 103),null);
+insert INTO dbo.T_GCD_LOTE_PROP (id_lote_prop,id_condominio,id_lote,id_proprietario,dt_inicio,dt_termino) values
+(8,4,8,4,convert(date, '04/02/2000', 103),null);
+
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(1, 'tiquinho ticoso 1', convert(date, '20/01/1970', 103),56458597412, 648522197, '1', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(2, 'tiquinho ticoso 2', convert(date, '21/01/1970', 103),56458597413, 648522198, '2', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(3, 'tiquinho ticoso 3', convert(date, '22/01/1970', 103),56458597414, 648522199, '3', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(4, 'tiquinho ticoso 4', convert(date, '23/01/1970', 103),56458597415, 648522200, '4', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(5, 'tiquinho ticoso 5', convert(date, '24/01/1970', 103),56458597416, 648522201, '5', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(6, 'tiquinho ticoso 6', convert(date, '25/01/1970', 103),56458597417, 648522202, '6', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(7, 'tiquinho ticoso 7', convert(date, '26/01/1970', 103),56458597418, 648522203, '7', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(8, 'tiquinho ticoso 8', convert(date, '27/01/1970', 103),56458597419, 648522204, '8', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(9, 'tiquinho ticoso 9', convert(date, '28/01/1970', 103),56458597420, 648522205, '9', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(10, 'tiquinho ticoso 10', convert(date, '29/01/1970', 103),56458597421, 648522206, '1', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(11, 'tiquinho ticoso 11', convert(date, '30/01/1970', 103),56458597422, 648522207, '2', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(12, 'tiquinho ticoso 12', convert(date, '31/01/1970', 103),56458597423, 648522208, '3', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(13, 'tiquinho ticoso 13', convert(date, '01/02/1970', 103),56458597424, 648522209, '4', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(14, 'tiquinho ticoso 14', convert(date, '02/02/1970', 103),56458597425, 648522210, '5', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(15, 'tiquinho ticoso 15', convert(date, '03/02/1970', 103),56458597426, 648522211, '6', convert(date, '04/02/2000', 103));
+insert INTO dbo.T_GCD_FUNC_PORTARIA (id_func_portaria,nm_funcionario,dt_nasc,nr_cpf,nr_rg,nm_digito_rg,dt_cadastro) values
+(16, 'tiquinho ticoso 16', convert(date, '04/02/1970', 103),56458597427, 648522212, '7', convert(date, '04/02/2000', 103));
+
+insert INTO dbo.T_GCD_COND_LOGR (id_logr_empresa,id_condominio,id_logradouro,dt_inicio,dt_termino,nr_endereco,ds_complemento,ds_ponto_referencia) values
+(1, 1, 100, convert(date, '01/02/2000', 103), null, 500, 'prédio', 'ponto 1');
+insert INTO dbo.T_GCD_COND_LOGR (id_logr_empresa,id_condominio,id_logradouro,dt_inicio,dt_termino,nr_endereco,ds_complemento,ds_ponto_referencia) values
+(2, 2, 200, convert(date, '02/02/2000', 103), null, 600, 'prédio', 'ponto 2');
+insert INTO dbo.T_GCD_COND_LOGR (id_logr_empresa,id_condominio,id_logradouro,dt_inicio,dt_termino,nr_endereco,ds_complemento,ds_ponto_referencia) values
+(3, 3, 300, convert(date, '03/02/2000', 103), null, 700, 'prédio', 'ponto 3');
+insert INTO dbo.T_GCD_COND_LOGR (id_logr_empresa,id_condominio,id_logradouro,dt_inicio,dt_termino,nr_endereco,ds_complemento,ds_ponto_referencia) values
+(4, 4, 400, convert(date, '04/02/2000', 103), null, 800, 'prédio', 'ponto 4');
+
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(1,'Mariza  Fonseca', convert(date, '08/07/1972', 103),55392651146,19163285,'1', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(2,'Mariza Laporte Lopes', convert(date, '28/07/1972', 103),55392651147,19163286,'1', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(3,'Mariza Santos Fonseca', convert(date, '29/07/1972', 103),55392651148,19163287,'1', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(4,'Mariza Maria', convert(date, '30/07/1972', 103),55392651149,19163288,'1', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(5,'Mariza Sapaio', convert(date, '31/07/1972', 103),55392651150,19163289,'1', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(6,'Mariza Lima', convert(date, '01/08/1972', 103),55392651151,19163290,'1', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(7,'Mariza Joares', convert(date, '02/08/1972', 103),55392651152,19163291,'1', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(8,'Mariza Nunes Santos', convert(date, '03/08/1972', 103),55392651153,19163292,'1', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(9,'Mariza Calvacante', convert(date, '04/08/1972', 103),55392651154,19163293,'1', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(10,'Mariza Souza Santos Fonseca', convert(date, '05/08/1972', 103),55392651155,19163294,'1', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(11,'Mariza Albuquerque', convert(date, '06/08/1972', 103),55392651156,19163295,'1', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(12,'Mariza Silva', convert(date, '07/08/1972', 103),55392651157,19163296,'1', convert(date, '20/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(13,'Mariza Lira', convert(date, '08/08/1972', 103),55392651158,19163297,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(14,'Mariza Feliciano', convert(date, '09/08/1972', 103),55392651159,19163298,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(15,'Mariza Santos Lima', convert(date, '10/08/1972', 103),55392651160,19163299,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(16,'Mariza Laporte Calvacante', convert(date, '11/08/1972', 103),55392651161,19163300,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(17,'Mariza Carvalho', convert(date, '12/08/1972', 103),55392651162,19163301,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(18,'Mariza Lito', convert(date, '13/08/1972', 103),55392651163,19163302,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(19,'Mariza Silva', convert(date, '14/08/1972', 103),55392651164,19163303,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(20,'Mariza Arruda', convert(date, '15/08/1972', 103),55392651165,19163304,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(21,'Everaldo Marcello Lucio', convert(date, '28/07/2002', 103),55392651166,19163305,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(22,'Everaldo Marcello ', convert(date, '29/07/2002', 103),55392651167,19163306,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(23,'Everaldo Arruda', convert(date, '30/07/2002', 103),55392651168,19163307,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(24,'Everaldo Silva', convert(date, '31/07/2002', 103),55392651169,19163308,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(25,'Everaldo Lito', convert(date, '01/08/2002', 103),55392651170,19163309,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(26,'Everaldo Carvalho', convert(date, '02/08/2002', 103),55392651171,19163310,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(27,'Everaldo Laporte Calvacante', convert(date, '03/08/2002', 103),55392651172,19163311,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(28,'Everaldo Calvacante', convert(date, '04/08/2002', 103),55392651173,19163312,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(29,'Everaldo Lima', convert(date, '05/08/2002', 103),55392651174,19163313,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(30,'Everaldo Feliciano', convert(date, '06/08/2002', 103),55392651175,19163314,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(31,'Everaldo Marcello Lira', convert(date, '07/08/2002', 103),55392651176,19163315,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(32,'Everaldo Silva', convert(date, '08/08/2002', 103),55392651177,19163316,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(33,'Everaldo Souza', convert(date, '09/08/2002', 103),55392651178,19163317,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(34,'Everaldo Antonio', convert(date, '10/08/2002', 103),55392651179,19163318,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(35,'Everaldo Bernardo', convert(date, '11/08/2002', 103),55392651180,19163319,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(36,'Everaldo Cesar', convert(date, '12/08/2002', 103),55392651181,19163320,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(37,'Everaldo Lira', convert(date, '13/08/2002', 103),55392651182,19163321,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(38,'Everaldo Silva Arruda', convert(date, '14/08/2002', 103),55392651183,19163322,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(39,'Everaldo Sampaio', convert(date, '15/08/2002', 103),55392651184,19163323,'1', convert(date, '21/01/2003', 103));
+INSERT INTO dbo.T_GCD_VISITANTE (id_visitante, nm_visitante, dt_nasc, nr_cpf, nr_rg, nm_digito_rg, dt_cadastro)  VALUES
+(40,'Everaldo Leite', convert(date, '16/08/2002', 103),55392651185,19163324,'1', convert(date, '21/01/2003', 103));
+
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (1,1,1,1,1,1,'E',convert(date, '01/01/2004', 103),'automovel - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (2,1,2,1,2,1,'S',convert(date, '02/01/2004', 103),'automovel - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (3,2,3,2,3,1,'E',convert(date, '03/01/2004', 103),'automovel - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (4,2,4,2,4,1,'S',convert(date, '04/01/2004', 103),'automovel - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (5,3,5,3,5,1,'E',convert(date, '05/01/2004', 103),'motocicleta - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (6,3,6,3,6,1,'S',convert(date, '06/01/2004', 103),'motocicleta - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (7,4,7,4,7,1,'E',convert(date, '07/01/2004', 103),'motocicleta - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (8,4,8,4,8,1,'S',convert(date, '08/01/2004', 103),'motocicleta - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (9,5,9,5,9,2,'E',convert(date, '09/01/2004', 103),'caminhão - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (10,5,10,5,10,2,'S',convert(date, '10/01/2004', 103),'caminhão - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (11,6,11,6,11,2,'E',convert(date, '11/01/2004', 103),'caminhão - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (12,6,12,6,12,2,'S',convert(date, '12/01/2004', 103),'caminhão - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (13,7,13,7,13,2,'E',convert(date, '13/01/2004', 103),'automovel - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (14,7,14,7,14,2,'S',convert(date, '14/01/2004', 103),'automovel - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (15,8,15,8,15,2,'E',convert(date, '15/01/2004', 103),'automovel - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (16,8,16,8,16,2,'S',convert(date, '16/01/2004', 103),'automovel - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (17,1,1,1,1,3,'E',convert(date, '17/01/2004', 103),'bicicleta - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (18,1,2,1,2,3,'S',convert(date, '18/01/2004', 103),'bicicleta - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (19,2,3,2,3,3,'E',convert(date, '19/01/2004', 103),'bicicleta - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (20,2,4,2,4,3,'S',convert(date, '20/01/2004', 103),'bicicleta - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (21,3,5,3,5,3,'E',convert(date, '21/01/2004', 103),'motocicleta - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (22,3,6,3,6,3,'S',convert(date, '22/01/2004', 103),'motocicleta - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (23,4,7,4,7,3,'E',convert(date, '23/01/2004', 103),'motocicleta - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (24,4,8,4,8,3,'S',convert(date, '24/01/2004', 103),'motocicleta - 1',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (25,5,9,5,9,4,'E',convert(date, '25/01/2004', 103),'automovel - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (26,5,10,5,10,4,'S',convert(date, '26/01/2004', 103),'automovel - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (27,6,11,6,11,4,'E',convert(date, '27/01/2004', 103),'automovel - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (28,6,12,6,12,4,'S',convert(date, '28/01/2004', 103),'automovel - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (29,7,13,7,13,4,'E',convert(date, '29/01/2004', 103),'motocicleta - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (30,7,14,7,14,4,'S',convert(date, '30/01/2004', 103),'motocicleta - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (31,8,15,8,15,4,'E',convert(date, '31/01/2004', 103),'motocicleta - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (32,8,16,8,16,4,'S',convert(date, '01/02/2004', 103),'motocicleta - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (33,1,1,1,1,5,'E',convert(date, '02/02/2004', 103),'caminhão - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (34,1,2,1,2,5,'S',convert(date, '03/02/2004', 103),'caminhão - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (35,2,3,2,3,5,'E',convert(date, '04/02/2004', 103),'caminhão - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (36,2,4,2,4,5,'S',convert(date, '05/02/2004', 103),'caminhão - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (37,3,5,3,5,5,'E',convert(date, '06/02/2004', 103),'automovel - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (38,3,6,3,6,5,'S',convert(date, '07/02/2004', 103),'automovel - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (39,4,7,4,7,5,'E',convert(date, '08/02/2004', 103),'automovel - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (40,4,8,4,8,5,'S',convert(date, '09/02/2004', 103),'automovel - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (41,5,9,5,9,6,'E',convert(date, '10/02/2004', 103),'bicicleta - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (42,5,10,5,10,6,'S',convert(date, '11/02/2004', 103),'bicicleta - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (43,6,11,6,11,6,'E',convert(date, '12/02/2004', 103),'bicicleta - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (44,6,12,6,12,6,'S',convert(date, '13/02/2004', 103),'bicicleta - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (45,7,13,7,13,6,'E',convert(date, '14/02/2004', 103),'motocicleta - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (46,7,14,7,14,6,'S',convert(date, '15/02/2004', 103),'motocicleta - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (47,8,15,8,15,6,'E',convert(date, '16/02/2004', 103),'motocicleta - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (48,8,16,8,16,6,'S',convert(date, '17/02/2004', 103),'motocicleta - 2',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (49,1,1,1,1,7,'E',convert(date, '18/02/2004', 103),'automovel - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (50,1,2,1,2,7,'S',convert(date, '19/02/2004', 103),'automovel - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (51,2,3,2,3,7,'E',convert(date, '20/02/2004', 103),'automovel - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (52,2,4,2,4,7,'S',convert(date, '21/02/2004', 103),'automovel - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (53,3,5,3,5,7,'E',convert(date, '22/02/2004', 103),'motocicleta - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (54,3,6,3,6,7,'S',convert(date, '23/02/2004', 103),'motocicleta - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (55,4,7,4,7,7,'E',convert(date, '24/02/2004', 103),'motocicleta - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (56,4,8,4,8,7,'S',convert(date, '25/02/2004', 103),'motocicleta - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (57,5,9,5,9,8,'E',convert(date, '26/02/2004', 103),'caminhão - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (58,5,10,5,10,8,'S',convert(date, '27/02/2004', 103),'caminhão - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (59,6,11,6,11,8,'E',convert(date, '28/02/2004', 103),'caminhão - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (60,6,12,6,12,8,'S',convert(date, '29/02/2004', 103),'caminhão - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (61,7,13,7,13,8,'E',convert(date, '01/03/2004', 103),'automovel - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (62,7,14,7,14,8,'S',convert(date, '02/03/2004', 103),'automovel - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (63,8,15,8,15,8,'E',convert(date, '03/03/2004', 103),'automovel - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (64,8,16,8,16,8,'S',convert(date, '04/03/2004', 103),'automovel - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (65,1,1,1,1,9,'E',convert(date, '05/03/2004', 103),'bicicleta - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (66,1,2,1,2,9,'S',convert(date, '06/03/2004', 103),'bicicleta - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (67,2,3,2,3,9,'E',convert(date, '07/03/2004', 103),'bicicleta - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (68,2,4,2,4,9,'S',convert(date, '08/03/2004', 103),'bicicleta - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (69,3,5,3,5,9,'E',convert(date, '09/03/2004', 103),'motocicleta - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (70,3,6,3,6,9,'S',convert(date, '10/03/2004', 103),'motocicleta - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (71,4,7,4,7,9,'E',convert(date, '11/03/2004', 103),'motocicleta - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (72,4,8,4,8,9,'S',convert(date, '12/03/2004', 103),'motocicleta - 3',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (73,5,9,5,9,10,'E',convert(date, '13/03/2004', 103),'automovel - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (74,5,10,5,10,10,'S',convert(date, '14/03/2004', 103),'automovel - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (75,6,11,6,11,10,'E',convert(date, '15/03/2004', 103),'automovel - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (76,6,12,6,12,10,'S',convert(date, '16/03/2004', 103),'automovel - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (77,7,13,7,13,10,'E',convert(date, '17/03/2004', 103),'motocicleta - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (78,7,14,7,14,10,'S',convert(date, '18/03/2004', 103),'motocicleta - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (79,8,15,8,15,10,'E',convert(date, '19/03/2004', 103),'motocicleta - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (80,8,16,8,16,10,'S',convert(date, '20/03/2004', 103),'motocicleta - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (81,1,1,1,1,11,'E',convert(date, '21/03/2004', 103),'caminhão - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (82,1,2,1,2,11,'S',convert(date, '22/03/2004', 103),'caminhão - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (83,2,3,2,3,11,'E',convert(date, '23/03/2004', 103),'caminhão - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (84,2,4,2,4,11,'S',convert(date, '24/03/2004', 103),'caminhão - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (85,3,5,3,5,11,'E',convert(date, '25/03/2004', 103),'automovel - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (86,3,6,3,6,11,'S',convert(date, '26/03/2004', 103),'automovel - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (87,4,7,4,7,11,'E',convert(date, '27/03/2004', 103),'automovel - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (88,4,8,4,8,11,'S',convert(date, '28/03/2004', 103),'automovel - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (89,5,9,5,9,12,'E',convert(date, '29/03/2004', 103),'bicicleta - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (90,5,10,5,10,12,'S',convert(date, '30/03/2004', 103),'bicicleta - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (91,6,11,6,11,12,'E',convert(date, '31/03/2004', 103),'bicicleta - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (92,6,12,6,12,12,'S',convert(date, '01/04/2004', 103),'bicicleta - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (93,7,13,7,13,12,'E',convert(date, '02/04/2004', 103),'motocicleta - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (94,7,14,7,14,12,'S',convert(date, '03/04/2004', 103),'motocicleta - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (95,8,15,8,15,12,'E',convert(date, '04/04/2004', 103),'motocicleta - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (96,8,16,8,16,12,'S',convert(date, '05/04/2004', 103),'motocicleta - 4',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (97,1,1,1,1,13,'E',convert(date, '06/04/2004', 103),'automovel - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (98,1,2,1,2,13,'S',convert(date, '07/04/2004', 103),'automovel - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (99,2,3,2,3,13,'E',convert(date, '08/04/2004', 103),'automovel - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (100,2,4,2,4,13,'S',convert(date, '09/04/2004', 103),'automovel - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (101,3,5,3,5,13,'E',convert(date, '10/04/2004', 103),'motocicleta - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (102,3,6,3,6,13,'S',convert(date, '11/04/2004', 103),'motocicleta - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (103,4,7,4,7,13,'E',convert(date, '12/04/2004', 103),'motocicleta - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (104,4,8,4,8,13,'S',convert(date, '13/04/2004', 103),'motocicleta - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (105,5,9,5,9,14,'E',convert(date, '14/04/2004', 103),'caminhão - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (106,5,10,5,10,14,'S',convert(date, '15/04/2004', 103),'caminhão - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (107,6,11,6,11,14,'E',convert(date, '16/04/2004', 103),'caminhão - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (108,6,12,6,12,14,'S',convert(date, '17/04/2004', 103),'caminhão - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (109,7,13,7,13,14,'E',convert(date, '18/04/2004', 103),'automovel - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (110,7,14,7,14,14,'S',convert(date, '19/04/2004', 103),'automovel - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (111,8,15,8,15,14,'E',convert(date, '20/04/2004', 103),'automovel - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (112,8,16,8,16,14,'S',convert(date, '21/04/2004', 103),'automovel - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (113,1,1,1,1,15,'E',convert(date, '22/04/2004', 103),'bicicleta - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (114,1,2,1,2,15,'S',convert(date, '23/04/2004', 103),'bicicleta - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (115,2,3,2,3,15,'E',convert(date, '24/04/2004', 103),'bicicleta - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (116,2,4,2,4,15,'S',convert(date, '25/04/2004', 103),'bicicleta - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (117,3,5,3,5,15,'E',convert(date, '26/04/2004', 103),'motocicleta - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (118,3,6,3,6,15,'S',convert(date, '27/04/2004', 103),'motocicleta - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (119,4,7,4,7,15,'E',convert(date, '28/04/2004', 103),'motocicleta - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (120,4,8,4,8,15,'S',convert(date, '29/04/2004', 103),'motocicleta - 5',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (121,5,9,5,9,16,'E',convert(date, '30/04/2004', 103),'automovel - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (122,5,10,5,10,16,'S',convert(date, '01/05/2004', 103),'automovel - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (123,6,11,6,11,16,'E',convert(date, '02/05/2004', 103),'automovel - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (124,6,12,6,12,16,'S',convert(date, '03/05/2004', 103),'automovel - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (125,7,13,7,13,16,'E',convert(date, '04/05/2004', 103),'motocicleta - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (126,7,14,7,14,16,'S',convert(date, '05/05/2004', 103),'motocicleta - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (127,8,15,8,15,16,'E',convert(date, '06/05/2004', 103),'motocicleta - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (128,8,16,8,16,16,'S',convert(date, '07/05/2004', 103),'motocicleta - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (129,1,1,1,1,17,'E',convert(date, '08/05/2004', 103),'caminhão - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (130,1,2,1,2,17,'S',convert(date, '09/05/2004', 103),'caminhão - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (131,2,3,2,3,17,'E',convert(date, '10/05/2004', 103),'caminhão - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (132,2,4,2,4,17,'S',convert(date, '11/05/2004', 103),'caminhão - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (133,3,5,3,5,17,'E',convert(date, '12/05/2004', 103),'automovel - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (134,3,6,3,6,17,'S',convert(date, '13/05/2004', 103),'automovel - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (135,4,7,4,7,17,'E',convert(date, '14/05/2004', 103),'automovel - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (136,4,8,4,8,17,'S',convert(date, '15/05/2004', 103),'automovel - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (137,5,9,5,9,18,'E',convert(date, '16/05/2004', 103),'bicicleta - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (138,5,10,5,10,18,'S',convert(date, '17/05/2004', 103),'bicicleta - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (139,6,11,6,11,18,'E',convert(date, '18/05/2004', 103),'bicicleta - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (140,6,12,6,12,18,'S',convert(date, '19/05/2004', 103),'bicicleta - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (141,7,13,7,13,18,'E',convert(date, '20/05/2004', 103),'motocicleta - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (142,7,14,7,14,18,'S',convert(date, '21/05/2004', 103),'motocicleta - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (143,8,15,8,15,18,'E',convert(date, '22/05/2004', 103),'motocicleta - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (144,8,16,8,16,18,'S',convert(date, '23/05/2004', 103),'motocicleta - 6',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (145,1,1,1,1,19,'E',convert(date, '24/05/2004', 103),'automovel - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (146,1,2,1,2,19,'S',convert(date, '25/05/2004', 103),'automovel - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (147,2,3,2,3,19,'E',convert(date, '26/05/2004', 103),'automovel - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (148,2,4,2,4,19,'S',convert(date, '27/05/2004', 103),'automovel - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (149,3,5,3,5,19,'E',convert(date, '28/05/2004', 103),'motocicleta - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (150,3,6,3,6,19,'S',convert(date, '29/05/2004', 103),'motocicleta - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (151,4,7,4,7,19,'E',convert(date, '30/05/2004', 103),'motocicleta - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (152,4,8,4,8,19,'S',convert(date, '31/05/2004', 103),'motocicleta - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (153,5,9,5,9,20,'E',convert(date, '01/06/2004', 103),'caminhão - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (154,5,10,5,10,20,'S',convert(date, '02/06/2004', 103),'caminhão - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (155,6,11,6,11,20,'E',convert(date, '03/06/2004', 103),'caminhão - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (156,6,12,6,12,20,'S',convert(date, '04/06/2004', 103),'caminhão - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (157,7,13,7,13,20,'E',convert(date, '05/06/2004', 103),'automovel - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (158,7,14,7,14,20,'S',convert(date, '06/06/2004', 103),'automovel - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (159,8,15,8,15,20,'E',convert(date, '07/06/2004', 103),'automovel - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (160,8,16,8,16,20,'S',convert(date, '08/06/2004', 103),'automovel - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (161,1,1,1,1,21,'E',convert(date, '09/06/2004', 103),'bicicleta - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (162,1,2,1,2,21,'S',convert(date, '10/06/2004', 103),'bicicleta - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (163,2,3,2,3,21,'E',convert(date, '11/06/2004', 103),'bicicleta - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (164,2,4,2,4,21,'S',convert(date, '12/06/2004', 103),'bicicleta - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (165,3,5,3,5,21,'E',convert(date, '13/06/2004', 103),'motocicleta - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (166,3,6,3,6,21,'S',convert(date, '14/06/2004', 103),'motocicleta - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (167,4,7,4,7,21,'E',convert(date, '15/06/2004', 103),'motocicleta - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (168,4,8,4,8,21,'S',convert(date, '16/06/2004', 103),'motocicleta - 7',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (169,5,9,5,9,22,'E',convert(date, '17/06/2004', 103),'automovel - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (170,5,10,5,10,22,'S',convert(date, '18/06/2004', 103),'automovel - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (171,6,11,6,11,22,'E',convert(date, '19/06/2004', 103),'automovel - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (172,6,12,6,12,22,'S',convert(date, '20/06/2004', 103),'automovel - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (173,7,13,7,13,22,'E',convert(date, '21/06/2004', 103),'motocicleta - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (174,7,14,7,14,22,'S',convert(date, '22/06/2004', 103),'motocicleta - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (175,8,15,8,15,22,'E',convert(date, '23/06/2004', 103),'motocicleta - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (176,8,16,8,16,22,'S',convert(date, '24/06/2004', 103),'motocicleta - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (177,1,1,1,1,23,'E',convert(date, '25/06/2004', 103),'caminhão - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (178,1,2,1,2,23,'S',convert(date, '26/06/2004', 103),'caminhão - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (179,2,3,2,3,23,'E',convert(date, '27/06/2004', 103),'caminhão - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (180,2,4,2,4,23,'S',convert(date, '28/06/2004', 103),'caminhão - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (181,3,5,3,5,23,'E',convert(date, '29/06/2004', 103),'automovel - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (182,3,6,3,6,23,'S',convert(date, '30/06/2004', 103),'automovel - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (183,4,7,4,7,23,'E',convert(date, '01/07/2004', 103),'automovel - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (184,4,8,4,8,23,'S',convert(date, '02/07/2004', 103),'automovel - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (185,5,9,5,9,24,'E',convert(date, '03/07/2004', 103),'bicicleta - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (186,5,10,5,10,24,'S',convert(date, '04/07/2004', 103),'bicicleta - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (187,6,11,6,11,24,'E',convert(date, '05/07/2004', 103),'bicicleta - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (188,6,12,6,12,24,'S',convert(date, '06/07/2004', 103),'bicicleta - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (189,7,13,7,13,24,'E',convert(date, '07/07/2004', 103),'motocicleta - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (190,7,14,7,14,24,'S',convert(date, '08/07/2004', 103),'motocicleta - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (191,8,15,8,15,24,'E',convert(date, '09/07/2004', 103),'motocicleta - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (192,8,16,8,16,24,'S',convert(date, '10/07/2004', 103),'motocicleta - 8',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (193,1,1,1,1,25,'E',convert(date, '11/07/2004', 103),'automovel - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (194,1,2,1,2,25,'S',convert(date, '12/07/2004', 103),'automovel - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (195,2,3,2,3,25,'E',convert(date, '13/07/2004', 103),'automovel - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (196,2,4,2,4,25,'S',convert(date, '14/07/2004', 103),'automovel - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (197,3,5,3,5,25,'E',convert(date, '15/07/2004', 103),'motocicleta - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (198,3,6,3,6,25,'S',convert(date, '16/07/2004', 103),'motocicleta - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (199,4,7,4,7,25,'E',convert(date, '17/07/2004', 103),'motocicleta - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (200,4,8,4,8,25,'S',convert(date, '18/07/2004', 103),'motocicleta - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (201,5,9,5,9,26,'E',convert(date, '19/07/2004', 103),'caminhão - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (202,5,10,5,10,26,'S',convert(date, '20/07/2004', 103),'caminhão - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (203,6,11,6,11,26,'E',convert(date, '21/07/2004', 103),'caminhão - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (204,6,12,6,12,26,'S',convert(date, '22/07/2004', 103),'caminhão - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (205,7,13,7,13,26,'E',convert(date, '23/07/2004', 103),'automovel - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (206,7,14,7,14,26,'S',convert(date, '24/07/2004', 103),'automovel - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (207,8,15,8,15,26,'E',convert(date, '25/07/2004', 103),'automovel - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (208,8,16,8,16,26,'S',convert(date, '26/07/2004', 103),'automovel - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (209,1,1,1,1,27,'E',convert(date, '27/07/2004', 103),'bicicleta - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (210,1,2,1,2,27,'S',convert(date, '28/07/2004', 103),'bicicleta - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (211,2,3,2,3,27,'E',convert(date, '29/07/2004', 103),'bicicleta - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (212,2,4,2,4,27,'S',convert(date, '30/07/2004', 103),'bicicleta - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (213,3,5,3,5,27,'E',convert(date, '31/07/2004', 103),'motocicleta - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (214,3,6,3,6,27,'S',convert(date, '01/08/2004', 103),'motocicleta - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (215,4,7,4,7,27,'E',convert(date, '02/08/2004', 103),'motocicleta - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (216,4,8,4,8,27,'S',convert(date, '03/08/2004', 103),'motocicleta - 9',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (217,5,9,5,9,28,'E',convert(date, '04/08/2004', 103),'automovel - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (218,5,10,5,10,28,'S',convert(date, '05/08/2004', 103),'automovel - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (219,6,11,6,11,28,'E',convert(date, '06/08/2004', 103),'automovel - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (220,6,12,6,12,28,'S',convert(date, '07/08/2004', 103),'automovel - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (221,7,13,7,13,28,'E',convert(date, '08/08/2004', 103),'motocicleta - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (222,7,14,7,14,28,'S',convert(date, '09/08/2004', 103),'motocicleta - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (223,8,15,8,15,28,'E',convert(date, '10/08/2004', 103),'motocicleta - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (224,8,16,8,16,28,'S',convert(date, '11/08/2004', 103),'motocicleta - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (225,1,1,1,1,29,'E',convert(date, '12/08/2004', 103),'caminhão - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (226,1,2,1,2,29,'S',convert(date, '13/08/2004', 103),'caminhão - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (227,2,3,2,3,29,'E',convert(date, '14/08/2004', 103),'caminhão - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (228,2,4,2,4,29,'S',convert(date, '15/08/2004', 103),'caminhão - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (229,3,5,3,5,29,'E',convert(date, '16/08/2004', 103),'automovel - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (230,3,6,3,6,29,'S',convert(date, '17/08/2004', 103),'automovel - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (231,4,7,4,7,29,'E',convert(date, '18/08/2004', 103),'automovel - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (232,4,8,4,8,29,'S',convert(date, '19/08/2004', 103),'automovel - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (233,5,9,5,9,30,'E',convert(date, '20/08/2004', 103),'bicicleta - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (234,5,10,5,10,30,'S',convert(date, '21/08/2004', 103),'bicicleta - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (235,6,11,6,11,30,'E',convert(date, '22/08/2004', 103),'bicicleta - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (236,6,12,6,12,30,'S',convert(date, '23/08/2004', 103),'bicicleta - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (237,7,13,7,13,30,'E',convert(date, '24/08/2004', 103),'motocicleta - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (238,7,14,7,14,30,'S',convert(date, '25/08/2004', 103),'motocicleta - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (239,8,15,8,15,30,'E',convert(date, '26/08/2004', 103),'motocicleta - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (240,8,16,8,16,30,'S',convert(date, '27/08/2004', 103),'motocicleta - 10',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (241,1,1,1,1,31,'E',convert(date, '28/08/2004', 103),'automovel - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (242,1,2,1,2,31,'S',convert(date, '29/08/2004', 103),'automovel - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (243,2,3,2,3,31,'E',convert(date, '30/08/2004', 103),'automovel - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (244,2,4,2,4,31,'S',convert(date, '31/08/2004', 103),'automovel - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (245,3,5,3,5,31,'E',convert(date, '01/09/2004', 103),'motocicleta - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (246,3,6,3,6,31,'S',convert(date, '02/09/2004', 103),'motocicleta - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (247,4,7,4,7,31,'E',convert(date, '03/09/2004', 103),'motocicleta - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (248,4,8,4,8,31,'S',convert(date, '04/09/2004', 103),'motocicleta - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (249,5,9,5,9,32,'E',convert(date, '05/09/2004', 103),'caminhão - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (250,5,10,5,10,32,'S',convert(date, '06/09/2004', 103),'caminhão - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (251,6,11,6,11,32,'E',convert(date, '07/09/2004', 103),'caminhão - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (252,6,12,6,12,32,'S',convert(date, '08/09/2004', 103),'caminhão - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (253,7,13,7,13,32,'E',convert(date, '09/09/2004', 103),'automovel - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (254,7,14,7,14,32,'S',convert(date, '10/09/2004', 103),'automovel - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (255,8,15,8,15,32,'E',convert(date, '11/09/2004', 103),'automovel - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (256,8,16,8,16,32,'S',convert(date, '12/09/2004', 103),'automovel - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (257,1,1,1,1,33,'E',convert(date, '13/09/2004', 103),'bicicleta - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (258,1,2,1,2,33,'S',convert(date, '14/09/2004', 103),'bicicleta - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (259,2,3,2,3,33,'E',convert(date, '15/09/2004', 103),'bicicleta - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (260,2,4,2,4,33,'S',convert(date, '16/09/2004', 103),'bicicleta - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (261,3,5,3,5,33,'E',convert(date, '17/09/2004', 103),'motocicleta - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (262,3,6,3,6,33,'S',convert(date, '18/09/2004', 103),'motocicleta - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (263,4,7,4,7,33,'E',convert(date, '19/09/2004', 103),'motocicleta - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (264,4,8,4,8,33,'S',convert(date, '20/09/2004', 103),'motocicleta - 11',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (265,5,9,5,9,34,'E',convert(date, '21/09/2004', 103),'automovel - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (266,5,10,5,10,34,'S',convert(date, '22/09/2004', 103),'automovel - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (267,6,11,6,11,34,'E',convert(date, '23/09/2004', 103),'automovel - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (268,6,12,6,12,34,'S',convert(date, '24/09/2004', 103),'automovel - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (269,7,13,7,13,34,'E',convert(date, '25/09/2004', 103),'motocicleta - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (270,7,14,7,14,34,'S',convert(date, '26/09/2004', 103),'motocicleta - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (271,8,15,8,15,34,'E',convert(date, '27/09/2004', 103),'motocicleta - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (272,8,16,8,16,34,'S',convert(date, '28/09/2004', 103),'motocicleta - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (273,1,1,1,1,35,'E',convert(date, '29/09/2004', 103),'caminhão - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (274,1,2,1,2,35,'S',convert(date, '30/09/2004', 103),'caminhão - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (275,2,3,2,3,35,'E',convert(date, '01/10/2004', 103),'caminhão - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (276,2,4,2,4,35,'S',convert(date, '02/10/2004', 103),'caminhão - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (277,3,5,3,5,35,'E',convert(date, '03/10/2004', 103),'automovel - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (278,3,6,3,6,35,'S',convert(date, '04/10/2004', 103),'automovel - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (279,4,7,4,7,35,'E',convert(date, '05/10/2004', 103),'automovel - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (280,4,8,4,8,35,'S',convert(date, '06/10/2004', 103),'automovel - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (281,5,9,5,9,36,'E',convert(date, '07/10/2004', 103),'bicicleta - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (282,5,10,5,10,36,'S',convert(date, '08/10/2004', 103),'bicicleta - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (283,6,11,6,11,36,'E',convert(date, '09/10/2004', 103),'bicicleta - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (284,6,12,6,12,36,'S',convert(date, '10/10/2004', 103),'bicicleta - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (285,7,13,7,13,36,'E',convert(date, '11/10/2004', 103),'motocicleta - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (286,7,14,7,14,36,'S',convert(date, '12/10/2004', 103),'motocicleta - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (287,8,15,8,15,36,'E',convert(date, '13/10/2004', 103),'motocicleta - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (288,8,16,8,16,36,'S',convert(date, '14/10/2004', 103),'motocicleta - 12',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (289,1,1,1,1,37,'E',convert(date, '15/10/2004', 103),'automovel - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (290,1,2,1,2,37,'S',convert(date, '16/10/2004', 103),'automovel - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (291,2,3,2,3,37,'E',convert(date, '17/10/2004', 103),'automovel - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (292,2,4,2,4,37,'S',convert(date, '18/10/2004', 103),'automovel - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (293,3,5,3,5,37,'E',convert(date, '19/10/2004', 103),'motocicleta - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (294,3,6,3,6,37,'S',convert(date, '20/10/2004', 103),'motocicleta - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (295,4,7,4,7,37,'E',convert(date, '21/10/2004', 103),'motocicleta - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (296,4,8,4,8,37,'S',convert(date, '22/10/2004', 103),'motocicleta - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (297,5,9,5,9,38,'E',convert(date, '23/10/2004', 103),'caminhão - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (298,5,10,5,10,38,'S',convert(date, '24/10/2004', 103),'caminhão - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (299,6,11,6,11,38,'E',convert(date, '25/10/2004', 103),'caminhão - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (300,6,12,6,12,38,'S',convert(date, '26/10/2004', 103),'caminhão - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (301,7,13,7,13,38,'E',convert(date, '27/10/2004', 103),'automovel - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (302,7,14,7,14,38,'S',convert(date, '28/10/2004', 103),'automovel - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (303,8,15,8,15,38,'E',convert(date, '29/10/2004', 103),'automovel - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (304,8,16,8,16,38,'S',convert(date, '30/10/2004', 103),'automovel - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (305,1,1,1,1,39,'E',convert(date, '31/10/2004', 103),'bicicleta - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (306,1,2,1,2,39,'S',convert(date, '01/11/2004', 103),'bicicleta - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (307,2,3,2,3,39,'E',convert(date, '02/11/2004', 103),'bicicleta - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (308,2,4,2,4,39,'S',convert(date, '03/11/2004', 103),'bicicleta - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (309,3,5,3,5,39,'E',convert(date, '04/11/2004', 103),'motocicleta - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (310,3,6,3,6,39,'S',convert(date, '05/11/2004', 103),'motocicleta - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (311,4,7,4,7,39,'E',convert(date, '06/11/2004', 103),'motocicleta - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (312,4,8,4,8,39,'S',convert(date, '07/11/2004', 103),'motocicleta - 13',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (313,5,9,5,9,40,'E',convert(date, '08/11/2004', 103),'automovel - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (314,5,10,5,10,40,'S',convert(date, '09/11/2004', 103),'automovel - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (315,6,11,6,11,40,'E',convert(date, '10/11/2004', 103),'automovel - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (316,6,12,6,12,40,'S',convert(date, '11/11/2004', 103),'automovel - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (317,7,13,7,13,40,'E',convert(date, '12/11/2004', 103),'motocicleta - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (318,7,14,7,14,40,'S',convert(date, '13/11/2004', 103),'motocicleta - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (319,8,15,8,15,40,'E',convert(date, '14/11/2004', 103),'motocicleta - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (320,8,16,8,16,40,'S',convert(date, '15/11/2004', 103),'motocicleta - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+
+insert into T_GCD_MOVIMENTACAO_PORTARIA (id_movimentacao,id_portaria,id_passagem,id_lote_prop,id_func_portaria,id_visitante,tp_movimentacao,dt_movimentacao,ds_resumida,img_movimentacao) values (321,8,16,8,16,40,'E',convert(date, '16/11/2004', 103),'motocicleta - 14',CONVERT(varbinary, 'aaaaaaaaaa'));
+
+
+Script CREATE DW
+
+CREATE SCHEMA DM_GESTAO_CONDOMINIO_S;
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [DM_T_GCD_PROPRIETARIO](
+    [ID_DM_PROPRIETARIO] [bigint] NOT NULL PRIMARY KEY,
+	[ID_PROPRIETARIO] [numeric](38, 0) NOT NULL,
+	[NM_PROPRIETARIO] [varchar](100) NOT NULL,
+	[NM_APELIDO] [varchar](50) NULL,
+	[NR_CPF] [numeric](12, 0) NULL,
+	[NR_RG] [numeric](11, 0) NULL,
+	[NM_DIGITO_RG] [char](1) NULL,
+	[ST_GENERO_BIOLOGICO] [char](1) NULL,
+	[ST_PROPRIETARIO] [char](1) NULL,
+)
+GO
+
+/****** Object:  Table [T_GCD_MOVIMENTACAO_PORTARIA]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [DM_T_GCD_MOVIMENTACAO_PORTARIA](
+	[ID_DM_MOVIMENTACAO] [bigint] NOT NULL PRIMARY KEY,
+	[ID_MOVIMENTACAO] [numeric](38, 0) NOT NULL,
+	[TP_MOVIMENTACAO] [char](1) NOT NULL,
+	[DS_RESUMIDA] [varchar](300) NULL,
+)
+GO
+
+/****** Object:  Table [T_GCD_LOTE]    Script Date: 11/06/2022 14:48:45 ******/
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [DM_T_GCD_LOTE](
+	[ID_DM_LOTE] [bigint] NOT NULL PRIMARY KEY,
+	[ID_LOTE] [numeric](38, 0) NOT NULL,
+	[NR_LOTE] [numeric](6, 0) NULL,
+	[NR_QUADRA] [numeric](6, 0) NULL,
+	[DS_LOGRADOURO_CONDOMINIO] [varchar](70) NULL,
+	[NR_RESIDENCIA] [varchar](15) NULL,
+	[ST_LOTE] [varchar](25) NULL,
+)
+GO
+
+/****** Object:  Table [T_GCD_CONDOMINIO]    Script Date: 11/06/2022 14:48:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [DM_T_GCD_CONDOMINIO](
+	[ID_DM_CONDOMINIO] [bigint] NOT NULL PRIMARY KEY,
+	[ID_CONDOMINIO] [numeric](38, 0) NOT NULL,
+	[NR_CNPJ] [numeric](14, 0) NOT NULL,
+	[DS_RAZAO_SOCIAL] [varchar](100) NOT NULL,
+	[NM_FANTASIA] [varchar](100) NULL,
+)
+GO
+
+/****************************************/
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [TEMPO_CONDOMINIO_E_S](
+	[ID_TEMPO] [bigint] NOT NULL PRIMARY KEY,
+	[dt_movimentacao] [date] NOT NULL,
+	[dia_semana] [numeric](38, 0) NOT NULL,
+	[quinzena] [numeric](38, 0) NOT NULL,
+	[trimestre] [numeric](38, 0) NOT NULL,
+	[semestral] [numeric](38, 0) NOT NULL,
+	[ano] [numeric](38, 0) NOT NULL,
+	[ano_mes] [numeric](38, 0) NOT NULL,
+)
+GO
+
+/****************************************/
+--CREATE SEQUENCE DM_GESTAO_CONDOMINIO_S.ID_FATO_no
+--START WITH 1
+--INCREMENT BY 1;
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [FATO_CONDOMINIO_E_S](
+	[ID_FATO] [bigint] NOT NULL PRIMARY KEY,-- DEFAULT (NEXT VALUE FOR DM_GESTAO_CONDOMINIO_S.ID_FATO_no),
+	[ID_TEMPO] [bigint] NOT NULL,
+	[ID_DM_PROPRIETARIO] [bigint] NOT NULL,
+	[ID_DM_MOVIMENTACAO] [bigint] NOT NULL,
+	[ID_DM_CONDOMINIO] [bigint] NOT NULL,
+	[ID_DM_LOTE] [bigint] NOT NULL,
+	[total_mvt_dia] [numeric](38, 0) NOT NULL,
+	[total_mvt_quinzena] [numeric](38, 0) NOT NULL,
+	[total_mvt_trimestre] [numeric](38, 0) NOT NULL,
+	[total_mvt_semestre] [numeric](38, 0) NOT NULL,
+	[total_mvt_ano] [numeric](38, 0) NOT NULL,
+)
+GO
+
+/****************************************/
+ALTER TABLE [FATO_CONDOMINIO_E_S]  WITH CHECK ADD  CONSTRAINT [FK_GCD_FATO_PROP_MOV] FOREIGN KEY([ID_DM_PROPRIETARIO])
+REFERENCES [DM_T_GCD_PROPRIETARIO] ([ID_DM_PROPRIETARIO])
+GO
+
+ALTER TABLE [FATO_CONDOMINIO_E_S] CHECK CONSTRAINT [FK_GCD_FATO_PROP_MOV]
+GO
+
+ALTER TABLE [FATO_CONDOMINIO_E_S]  WITH CHECK ADD  CONSTRAINT [FK_GCD_FATO_MVT_MOV] FOREIGN KEY([ID_DM_MOVIMENTACAO])
+REFERENCES [DM_T_GCD_MOVIMENTACAO_PORTARIA] ([ID_DM_MOVIMENTACAO])
+GO
+
+ALTER TABLE [FATO_CONDOMINIO_E_S] CHECK CONSTRAINT [FK_GCD_FATO_MVT_MOV]
+GO
+
+ALTER TABLE [FATO_CONDOMINIO_E_S]  WITH CHECK ADD  CONSTRAINT [FK_GCD_FATO_COND_MOV] FOREIGN KEY([ID_DM_CONDOMINIO])
+REFERENCES [DM_T_GCD_CONDOMINIO] ([ID_DM_CONDOMINIO])
+GO
+
+ALTER TABLE [FATO_CONDOMINIO_E_S] CHECK CONSTRAINT [FK_GCD_FATO_COND_MOV]
+GO
+
+ALTER TABLE [FATO_CONDOMINIO_E_S]  WITH CHECK ADD  CONSTRAINT [FK_GCD_FATO_LT_MOV] FOREIGN KEY([ID_DM_LOTE])
+REFERENCES [DM_T_GCD_LOTE] ([ID_DM_LOTE])
+GO
+
+ALTER TABLE [FATO_CONDOMINIO_E_S] CHECK CONSTRAINT [FK_GCD_FATO_LT_MOV]
+GO
+
+ALTER TABLE [FATO_CONDOMINIO_E_S]  WITH CHECK ADD  CONSTRAINT [FK_GCD_FATO_TEMPO_MOV] FOREIGN KEY([ID_TEMPO])
+REFERENCES [TEMPO_CONDOMINIO_E_S] ([ID_TEMPO])
+GO
+
+ALTER TABLE [FATO_CONDOMINIO_E_S] CHECK CONSTRAINT [FK_GCD_FATO_TEMPO_MOV]
+GO
+
+Script INSERT DW
+
+insert into DM_T_GCD_CONDOMINIO
+	(ID_DM_CONDOMINIO
+	,ID_CONDOMINIO
+	,NR_CNPJ
+	,DS_RAZAO_SOCIAL
+	,NM_FANTASIA)
+
+select 
+		cast(concat(ID_CONDOMINIO, NR_CNPJ) as bigint) as ID_DM_CONDOMINIO,
+		ID_CONDOMINIO, NR_CNPJ, DS_RAZAO_SOCIAL, NM_FANTASIA
+
+		from dbo.T_GCD_CONDOMINIO;
+
+
+insert into DM_T_GCD_LOTE
+	(ID_DM_LOTE
+	,ID_LOTE
+	,NR_LOTE
+	,NR_QUADRA
+	,DS_LOGRADOURO_CONDOMINIO
+	,NR_RESIDENCIA
+	,ST_LOTE)
+
+select 
+		cast(concat(prop.ID_PROPRIETARIO, lt.ID_LOTE, cdm.ID_CONDOMINIO) as bigint) as ID_DM_LOTE,
+		lt.ID_LOTE, lt.NR_LOTE, lt.NR_QUADRA, lt.DS_LOGRADOURO_CONDOMINIO, lt.NR_RESIDENCIA, lt.ST_LOTE
+
+		from dbo.T_GCD_PROPRIETARIO prop
+		inner join dbo.T_GCD_LOTE_PROP lt_prd
+		on lt_prd.id_proprietario = prop.id_proprietario
+		inner join dbo.T_GCD_LOTE lt
+		on lt.id_lote = lt_prd.id_lote
+		inner join dbo.T_GCD_CONDOMINIO cdm
+		on cdm.id_condominio = lt.id_condominio;
+
+
+insert into DM_T_GCD_MOVIMENTACAO_PORTARIA
+	(ID_DM_MOVIMENTACAO
+	,ID_MOVIMENTACAO
+	,TP_MOVIMENTACAO
+	,DS_RESUMIDA)
+
+select 
+		cast(concat(prop.ID_PROPRIETARIO, mvt.ID_MOVIMENTACAO, lt.ID_LOTE, cdm.ID_CONDOMINIO) as bigint) as ID_DM_MOVIMENTACAO,
+		mvt.ID_MOVIMENTACAO, 
+		mvt.tp_movimentacao, mvt.DS_RESUMIDA
+
+		from dbo.T_GCD_PROPRIETARIO prop
+		inner join dbo.T_GCD_LOTE_PROP lt_prd
+		on lt_prd.id_proprietario = prop.id_proprietario
+		inner join dbo.T_GCD_MOVIMENTACAO_PORTARIA mvt
+		on mvt.id_lote_prop = lt_prd.id_lote_prop
+		inner join dbo.T_GCD_LOTE lt
+		on lt.id_lote = lt_prd.id_lote
+		inner join dbo.T_GCD_CONDOMINIO cdm
+		on cdm.id_condominio = lt.id_condominio;
+
+insert into DM_T_GCD_PROPRIETARIO (ID_DM_PROPRIETARIO
+	,ID_PROPRIETARIO
+	,NM_PROPRIETARIO
+	,NM_APELIDO
+	,NR_CPF
+	,NR_RG
+	,NM_DIGITO_RG
+	,ST_GENERO_BIOLOGICO
+	,ST_PROPRIETARIO)  
+
+select 
+	cast(concat(dm.ID_PROPRIETARIO, dm.NR_CPF) as bigint) as ID_DM_PROPRIETARIO,
+			dm.ID_PROPRIETARIO, dm.NM_PROPRIETARIO, dm.NM_APELIDO, dm.NR_CPF, 
+				dm.NR_RG, dm.NM_DIGITO_RG, dm.ST_GENERO_BIOLOGICO, dm.ST_PROPRIETARIO
+			from dbo.T_GCD_PROPRIETARIO dm
+
+;
+
+-- TABELA TEMPO
+
+SELECT cast(concat(fatto.ID_PROPRIETARIO, fatto.ID_MOVIMENTACAO, fatto.ID_LOTE, fatto.ID_CONDOMINIO) as bigint) as key_dms,
+		fatto.dt_movimentacao, fatto.dia_semana, fatto.quinzena, fatto.trimestre, fatto.semestral, fatto.ano, fatto.ano_mes
+FROM
+
+(
+	select prop.ID_PROPRIETARIO, mvt.ID_MOVIMENTACAO, lt.ID_LOTE, cdm.ID_CONDOMINIO,
+       mvt.dt_movimentacao,
+	   datepart(weekday, mvt.dt_movimentacao) as dia_semana,
+	   mvt.tp_movimentacao, 
+	   case when day(mvt.dt_movimentacao) <= 15 then 1 else 2 end as quinzena,
+	   concat(year(mvt.dt_movimentacao), month(mvt.dt_movimentacao)) as ano_mes,
+	   case 
+		when month(mvt.dt_movimentacao) <= 3 then 
+			1
+		when month(mvt.dt_movimentacao) > 3 and month(mvt.dt_movimentacao) <= 6 then 
+			2
+		when month(mvt.dt_movimentacao) > 6 and month(mvt.dt_movimentacao) <= 9 then 
+			3
+		else
+			4
+	   end as trimestre,
+	   case 
+		when month(mvt.dt_movimentacao) <= 6 then 
+			1
+		else
+			2
+	   end as semestral,
+	   month(mvt.dt_movimentacao) as mes,
+	   year(mvt.dt_movimentacao) ano
+
+		from dbo.T_GCD_PROPRIETARIO prop
+		inner join dbo.T_GCD_LOTE_PROP lt_prd
+		on lt_prd.id_proprietario = prop.id_proprietario
+		inner join dbo.T_GCD_MOVIMENTACAO_PORTARIA mvt
+		on mvt.id_lote_prop = lt_prd.id_lote_prop
+		inner join dbo.T_GCD_LOTE lt
+		on lt.id_lote = lt_prd.id_lote
+		inner join dbo.T_GCD_CONDOMINIO cdm
+		on cdm.id_condominio = lt.id_condominio
+		
+) as fatto;
+
+insert into FATO_CONDOMINIO_E_S
+	(ID_FATO,ID_TEMPO
+	,ID_DM_PROPRIETARIO
+	,ID_DM_MOVIMENTACAO
+	,ID_DM_CONDOMINIO
+	,ID_DM_LOTE
+	,total_mvt_dia
+	,total_mvt_quinzena
+	,total_mvt_trimestre
+	,total_mvt_semestre
+	,total_mvt_ano)
+
+SELECT 
+		cast(concat(fatto.ID_PROPRIETARIO, fatto.ID_MOVIMENTACAO, fatto.ID_LOTE, fatto.ID_CONDOMINIO) as bigint) as ID_FATO,
+		cast(concat(fatto.ID_PROPRIETARIO, fatto.ID_MOVIMENTACAO, fatto.ID_LOTE, fatto.ID_CONDOMINIO) as bigint) as ID_TEMPO,
+		cast(concat(fatto.ID_PROPRIETARIO, fatto.NR_CPF) as bigint) as ID_DM_PROPRIETARIO,
+		cast(concat(fatto.ID_PROPRIETARIO, fatto.ID_MOVIMENTACAO, fatto.ID_LOTE, fatto.ID_CONDOMINIO) as bigint) as ID_DM_MOVIMENTACAO,
+		cast(concat(fatto.ID_CONDOMINIO, fatto.NR_CNPJ) as bigint) as ID_DM_CONDOMINIO,
+		cast(concat(fatto.ID_PROPRIETARIO, fatto.ID_LOTE, fatto.ID_CONDOMINIO) as bigint) as ID_DM_LOTE,
+	   count(fatto.dt_movimentacao) as total_mvt_dia, count(fatto.quinzena) as total_mvt_quinzena, 
+	   count(fatto.trimestre) as total_mvt_trimestre, count(fatto.semestral) as total_mvt_semestre, count(fatto.ano) total_mvt_ano
+		
+FROM
+
+(
+	select prop.ID_PROPRIETARIO, mvt.ID_MOVIMENTACAO, lt.ID_LOTE, cdm.ID_CONDOMINIO, prop.NR_CPF, cdm.NR_CNPJ,
+       mvt.dt_movimentacao,
+	   datepart(weekday, mvt.dt_movimentacao) as dia_semana,
+	   mvt.tp_movimentacao, 
+	   case when day(mvt.dt_movimentacao) <= 15 then 1 else 2 end as quinzena,
+	   concat(year(mvt.dt_movimentacao), month(mvt.dt_movimentacao)) as ano_mes,
+	   case 
+		when month(mvt.dt_movimentacao) <= 3 then 
+			1
+		when month(mvt.dt_movimentacao) > 3 and month(mvt.dt_movimentacao) <= 6 then 
+			2
+		when month(mvt.dt_movimentacao) > 6 and month(mvt.dt_movimentacao) <= 9 then 
+			3
+		else
+			4
+	   end as trimestre,
+	   case 
+		when month(mvt.dt_movimentacao) <= 6 then 
+			1
+		else
+			2
+	   end as semestral,
+	   month(mvt.dt_movimentacao) as mes,
+	   year(mvt.dt_movimentacao) ano
+
+		from dbo.T_GCD_PROPRIETARIO prop
+		inner join dbo.T_GCD_LOTE_PROP lt_prd
+		on lt_prd.id_proprietario = prop.id_proprietario
+		inner join dbo.T_GCD_MOVIMENTACAO_PORTARIA mvt
+		on mvt.id_lote_prop = lt_prd.id_lote_prop
+		inner join dbo.T_GCD_LOTE lt
+		on lt.id_lote = lt_prd.id_lote
+		inner join dbo.T_GCD_CONDOMINIO cdm
+		on cdm.id_condominio = lt.id_condominio
+		
+) as fatto
+group by fatto.ID_PROPRIETARIO, fatto.ID_MOVIMENTACAO, fatto.ID_LOTE, fatto.ID_CONDOMINIO, fatto.ano_mes, fatto.tp_movimentacao, fatto.dt_movimentacao, fatto.quinzena, fatto.trimestre, fatto.semestral, fatto.ano, fatto.NR_CPF, fatto.NR_CNPJ
+;
