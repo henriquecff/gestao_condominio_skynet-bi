@@ -1,6 +1,6 @@
 # Gestão e Análise do Condomínio SkyNet
 
-Apresentaremos as soluções das necessidades solicitadas da empresa SkyNet. Definiremos e justificaremos nossas escolhas para realização dos desafios. Apresentaremos análises e dashboard como complemento da solução.
+Soluções das necessidades solicitadas da empresa SkyNet, definimos e justificamos as escolhas para realização do desafio. Análise e dashboard como complemento da solução.
 
 # Área do conhecimento: 
  - Banco de dados (Arquitetura);
