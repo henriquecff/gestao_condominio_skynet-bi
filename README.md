@@ -5,4 +5,4 @@ Apresentaremos as soluções das necessidades solicitadas da empresa SkyNet. Def
 # Área do conhecimento: 
  - Banco de dados (Arquitetura);
  - Análise de dados em cloud;
- - Visualização de dados.
+ - [Visualização de dados](https://app.powerbi.com/view?r=eyJrIjoiOWQ3MzNkMjItMjkwYi00NGNiLTg2MGYtOTExNjc2ZjMyYzcyIiwidCI6IjRmYjFkMjM2LTNhNzctNGE4ZS1hN2E4LWExNmVjOGFhNDljMCJ9).
